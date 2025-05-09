@@ -26,6 +26,7 @@ class Program
 
         int sum = 0;
         int largestNum = -99999;
+        int smallestPosNum = 9999;
 
         foreach (int number in numbers)
         {
@@ -35,14 +36,22 @@ class Program
             {
                 largestNum = number;
             }
+
+            if (number > 0 && number < smallestPosNum)
+            {
+                smallestPosNum = number;
+            }
         }
 
         float average = ((float)sum) / numbers.Count;
 
+        numbers.Sort();
+
         Console.WriteLine($"The sum is: {sum}");
         Console.WriteLine($"The average is: {average}");
         Console.WriteLine($"The largest number is: {largestNum}");
-
-
+        Console.WriteLine($"The smallest positive number is: {smallestPosNum}");
+        Console.WriteLine("The sorted list is:");
+        numbers.ForEach(Console.WriteLine);
     }
 }
