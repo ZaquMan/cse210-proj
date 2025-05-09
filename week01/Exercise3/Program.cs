@@ -8,16 +8,9 @@ class Program
 
         while (replay)
         {
-            // Get user-generated magic number
-            //Console.Write("Please enter a number (DEBUG): ");
-            //int magicNumber = int.Parse(Console.ReadLine());
-
+            // Declare game variables.  These will reset each time the game is replayed.
             Random randomGenerator = new Random();
             int magicNumber = randomGenerator.Next(1, 101);
-
-            //int guess;
-            // Not sure if this needs to be declared before the do-while loop.
-
             int guess;
             int numGuesses = 0;
 
@@ -44,6 +37,7 @@ class Program
             Console.Write("Would you like to play again? (Yes/No) ");
             string replayString = Console.ReadLine();
 
+            // I'm going to accept anything that starts with a 'y' as a confirmation.
             if (Char.ToLower(replayString[0]) != 'y')
             {
                 replay = false;
