@@ -33,8 +33,9 @@ public class Entry
         Console.WriteLine();
     }
 
-    public string SaveEntry()
+    public string[] SaveEntry()
     {
-        return $"{_date}|{_prompt}|{_response}";
+        string[] data = {_date, _prompt, _response};
+        return data;
     }
 }

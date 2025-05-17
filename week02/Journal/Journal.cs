@@ -34,7 +34,9 @@ public class Journal
             {
                 foreach (Entry journalEntry in _entries)
                 {
-                    outputFile.WriteLine($"{journalEntry.SaveEntry()}");
+                    string[] entryData = journalEntry.SaveEntry();
+                    string dataOutput = String.Join("|", entryData);
+                    outputFile.WriteLine($"{dataOutput}");
                 }
             }
         }
