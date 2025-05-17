@@ -27,11 +27,38 @@ public class Journal
 
     public void SaveToFile(string filename)
     {
-        Console.WriteLine("DEBUG: Saving file, I guess");
+        
+        if (_entries.Count > 0)
+        {
+            using (StreamWriter outputFile = new StreamWriter(filename))
+            {
+                foreach (Entry journalEntry in _entries)
+                {
+                    outputFile.WriteLine($"{journalEntry.SaveEntry()}");
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("There is nothing to save.");
+        }
     }
 
     public void LoadFromFile(string filename)
     {
-        Console.WriteLine("DEBUG: Loading, Loading, Loading");
+        string[] lines = System.IO.File.ReadAllLines(filename);
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split("|");
+
+            string date = parts[0];
+            string prompt = parts[1];
+            string response = parts[2];
+
+            Entry newEntry = new Entry();
+            newEntry.LoadEntry(date, prompt, response);
+            _entries.Add(newEntry);
+        }
     }
 }

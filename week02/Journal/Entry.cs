@@ -2,11 +2,11 @@ using System;
 
 public class Entry
 {
-    string _date;
-    string _prompt;
-    string _response;
+    public string _date;
+    public string _prompt;
+    public string _response;
 
-    public Entry()
+    public void WriteEntry()
     {
         DateTime today = DateTime.Now;
         _date = today.ToShortDateString();
@@ -19,10 +19,22 @@ public class Entry
         _response = Console.ReadLine();
     }
 
+    public void LoadEntry(string date, string prompt, string response)
+    {
+        _date = date;
+        _prompt = prompt;
+        _response = response;
+    }
+
     public void Display()
     {
         Console.WriteLine($"Date: {_date} - Prompt: {_prompt}");
         Console.WriteLine(_response);
         Console.WriteLine();
+    }
+
+    public string SaveEntry()
+    {
+        return $"{_date}|{_prompt}|{_response}";
     }
 }

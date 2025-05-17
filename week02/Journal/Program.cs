@@ -37,20 +37,20 @@ class Program
             {
                 case "1":
                     Entry newEntry = new Entry();
-                    // TODO: Go through steps to fill out entry
+                    newEntry.WriteEntry();
                     activeJournal.AddEntry(newEntry);
                     break;
                 case "2":
                     activeJournal.DisplayAll();
                     break;
                 case "3":
-                    // TODO: Get user input for filename
-                    filename = "";
+                    Console.Write("What is the name of the file to load? ");
+                    filename = Console.ReadLine();
                     activeJournal.LoadFromFile(filename);
                     break;
                 case "4":
-                    // TODO: Get user input for filename
-                    filename = "";
+                    Console.Write("What is the name of the file to save to? ");
+                    filename = Console.ReadLine();
                     activeJournal.SaveToFile(filename);
                     break;
                 case "5":
