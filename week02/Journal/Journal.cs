@@ -6,14 +6,23 @@ public class Journal
 
     public void AddEntry(Entry newEntry)
     {
-        Console.WriteLine("DEBUG: New Entry HERE");
+        _entries.Add(newEntry);
     }
 
     public void DisplayAll()
     {
-        // TODO: Display one message if the journal is empty.
-        // TODO: Iterate through entry list calling the .Display() func.
-        Console.WriteLine("DEBUG: Display Entries HERE");
+        if (_entries.Count > 0)
+        {
+            foreach (Entry journalEntry in _entries)
+            {
+                journalEntry.Display();
+            }
+        }
+        else
+        {
+            Console.WriteLine("There are no journal entries to display");
+        }
+        
     }
 
     public void SaveToFile(string filename)
