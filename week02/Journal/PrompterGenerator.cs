@@ -2,7 +2,7 @@ using System;
 
 public class PromptGenerator
 {
-    List<string> _prompts = new List<string>();
+    private List<string> _prompts = new List<string>();
 
     public PromptGenerator()
     {

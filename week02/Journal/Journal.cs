@@ -2,7 +2,7 @@ using System;
 
 public class Journal
 {
-    List<Entry> _entries = new List<Entry>();
+    private List<Entry> _entries = new List<Entry>();
 
     public void AddEntry(Entry newEntry)
     {
