@@ -1,3 +1,6 @@
+//Above and Beyond:
+//Get reference from user input and pull the text from json scripture objects.
+
 using System;
 
 class Program
@@ -5,7 +8,7 @@ class Program
     static void Main(string[] args)
     {
         // Hard-coded references.  Above and beyond could be getting these from user input.
-        string reference = "3rd Nephi 11:4-7";
+        string reference = "3 Nephi 11:4-7";
         string verse = "And it came to pass that again they heard the voice, and they understood it ";
         verse += "not. And again the third time they did hear the voice, and did open their ears to ";
         verse += "hear it; and their eyes were towards the sound thereof; and they did look ";
