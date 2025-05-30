@@ -23,7 +23,7 @@ public class Video
 
     public int GetTotalComments()
     {
-        return _comments.length;
+        return _comments.Count;
     }
 
     public void AddComment(string username, string text)
@@ -36,9 +36,9 @@ public class Video
         string displayText = $"{_title} - {_author} ({_length} secs)";
         foreach (Comment comment in _comments)
         {
-            displayText += $"\n{comment.Display()}"
+            displayText += $"\n{comment.Display()}";
         }
 
-        return displayText
+        return displayText;
     }
 }
