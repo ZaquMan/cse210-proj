@@ -33,11 +33,12 @@ public class Video
 
     public string Display()
     {
-        string displayText = $"{_title} - {_author} ({_length} secs)";
+        string displayText = $"{_title} - {_author} ({_length} secs)\n";
         foreach (Comment comment in _comments)
         {
-            displayText += $"\n{comment.Display()}";
+            displayText += $"\n{comment.Display()}\n";
         }
+        displayText += "\n";
 
         return displayText;
     }
