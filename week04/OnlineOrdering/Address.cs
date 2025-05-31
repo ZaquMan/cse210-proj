@@ -12,4 +12,22 @@ class Address
         _state = state;
         _country = country;
     }
+
+    public bool IsInUSA()
+    {
+        if (_country.ToLower() == "usa" || _country.ToLower() == "us"
+            || _country.ToLower() == "united states"
+            || _country.ToLower() == "united states of america")
+        {
+            return true;
+        } //else
+        return false;
+    }
+
+    public string Display()
+    {
+        return $"{_streetAddress}\n" +
+               $"{_city}, {_state}\n" +
+               $"{_country}";
+    }
 }

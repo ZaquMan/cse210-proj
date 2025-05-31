@@ -11,25 +11,41 @@ class Order
         _customer = customer;
     }
 
+    public Order(string name, string streetAddress, string city, string state, string country)
+    {
+        _products = [];
+        _customer = new(name, streetAddress, city, state, country);
+    }
+
+    public void AddProduct(Product product)
+    {
+        _products.Add(product);
+    }
+
     public double CalculateOrderCost()
     {
-        double cost = 0.0f;
-
-        foreach (Product product in _products)
-        {
-            cost += product.CalculateCost();
-        }
-
-        return cost;
+        return _products.Aggregate(0.0, (sum , product) => sum + product.CalculateCost()) +
+               (_customer.IsInUSA() ? 5 : 35);
     }
 
     public string GetPackingLabel()
     {
-        return "";
+
+        return _products.Aggregate("Packing Label:\n\n", (returnString, product) => returnString + product.DisplayShort() + "\n").Trim();
+        // string returnText = "Packing Label:\n\n";
+// 
+// 
+        // foreach (Product product in _products)
+        // {
+            // returnText += $"{product.DisplayShort()}\n";
+        // }
+// 
+        // return returnText;
+        
     }
 
     public string GetShippingLabel()
     {
-        return "";
+        return  $"Shipping Label:\n\n{_customer.Display()}"; 
     }
 }

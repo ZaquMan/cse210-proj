@@ -18,10 +18,15 @@ class Product
         return _price * _quantity;
     }
 
-    public string Display()
+    public string DisplayWithPrice()
     {
         return $"{_productId} {_name,-15} {_quantity,3} " +
-               $"@{_price,6:0.00} ${CalculateCost(),8:0.00}";
-    //              var,pad,round
+               $"@{_price,6:C} ${CalculateCost(),8:C}";
+        //              var,pad,round
+    }
+
+    public string DisplayShort()
+    {
+        return $"{_productId} {_name,-15} (x{_quantity})";
     }
 }
