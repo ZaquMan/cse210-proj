@@ -23,20 +23,33 @@ public class Activity
     //Methods
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"This is the ${_name} Activity.\n" +
+        Console.WriteLine($"This is the {_name} Activity.\n" +
                           _description);
     }
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine($"You have completed the ${_name} Activity, spending ${_duration} seconds being mindful.");
+        Console.WriteLine($"You have completed the {_name} Activity, spending {_duration} seconds being mindful.");
     }
 
     public void ShowSpinner(int seconds)
     {
-        for (int i = 0; i < seconds; i++)
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(seconds);
+        while(endTime > DateTime.Now)
         {
-            Console.Write("\\|/-");
+            Console.Write("/");
+            Thread.Sleep(250);
+            Console.Write("\b");
+            Console.Write("-");
+            Thread.Sleep(250);
+            Console.Write("\b");
+            Console.Write("\\");
+            Thread.Sleep(250);
+            Console.Write("\b");
+            Console.Write("|");
+            Thread.Sleep(250);
+            Console.Write("\b");
         }
     }
 
@@ -44,7 +57,9 @@ public class Activity
     {
         for (int i = seconds; i > 0; i--)
         {
-            Console.WriteLine(i);
+            Console.Write($"{i},  ");
+            Thread.Sleep(1000);
         }
+        Console.Write("Done!\n");
     }
 }
