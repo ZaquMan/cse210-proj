@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using System.Globalization;
+
 public class Activity
 {
     //Variables
@@ -13,23 +16,54 @@ public class Activity
         _duration = 0;
     }
 
-    public Activity(string name, string description, int duration)
+    public Activity(string name, string description)
     {
         _name = name;
         _description = description;
-        _duration = duration;
+        _duration = 0;
     }
 
     //Methods
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"This is the {_name} Activity.\n" +
-                          _description);
+        //Start activity with a clean screen.
+        Console.Clear();
+        Console.WriteLine($"Welcome to the {_name}.\n\n" +
+                          $"{_description}\n");
+        Console.Write($"How long would you like to spend on the {_name}, in seconds? ");
+
+        bool inputPasses = false;
+
+        do
+        {
+            string userInput = Console.ReadLine();
+
+            if (int.TryParse(userInput, NumberStyles.None, null, out int userDuration))
+            {
+                _duration = userDuration;
+                inputPasses = true;
+            }
+            else
+            {
+                Console.WriteLine($"\"{userInput}\" is not a valid duration.  Please enter a new number.\n");
+                Console.Write($"How long would you like to spend on the {_name} activity (seconds)? ");
+            }
+
+        } while (!inputPasses);
+
+        Console.Clear();
+        Console.WriteLine("Get ready...");
+        ShowSpinner(5);
+
     }
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine($"You have completed the {_name} Activity, spending {_duration} seconds being mindful.");
+        Console.WriteLine("Well done!");
+        ShowSpinner(5);
+
+        Console.WriteLine($"You have completed the {_name}, spending {_duration} seconds being mindful.");
+        ShowSpinner(5);
     }
 
     public void ShowSpinner(int seconds)
@@ -57,9 +91,10 @@ public class Activity
     {
         for (int i = seconds; i > 0; i--)
         {
-            Console.Write($"{i},  ");
+            Console.Write($"{i}");
             Thread.Sleep(1000);
+            Console.Write("\b");
         }
-        Console.Write("Done!\n");
+        Console.WriteLine();
     }
 }
