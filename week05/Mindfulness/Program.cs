@@ -10,18 +10,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Mindfulness Project.");
-        Activity testAct = new();
-        testAct.ShowSpinner(5);
-        testAct.ShowCountDownSeconds(5);
-
         BreathingActivity breathingActivity = new BreathingActivity();
-
-        string listingActName = "Breathing Activity";
-        string listingActDescription = "This activity will help you relax by walking you through breathing "+
-                                         "in and out slowly.  Clear your mind and focus on your breathing.";
-        ListingActivity listingActivity = new ListingActivity(listingActName, listingActDescription);
-
+        ListingActivity listingActivity = new ListingActivity();
         ReflectingActivity reflectingActivity = new ReflectingActivity();
 
         string userInput = "";

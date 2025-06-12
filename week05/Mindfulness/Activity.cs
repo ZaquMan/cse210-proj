@@ -59,10 +59,10 @@ public class Activity
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine("Well done!");
+        Console.WriteLine("\nWell done!");
         ShowSpinner(5);
-
-        Console.WriteLine($"You have completed the {_name}, spending {_duration} seconds being mindful.");
+        
+        Console.WriteLine($"\nYou have completed the {_name}, spending {_duration} seconds being mindful.");
         ShowSpinner(5);
     }
 
@@ -74,16 +74,16 @@ public class Activity
         {
             Console.Write("/");
             Thread.Sleep(250);
-            Console.Write("\b");
-            Console.Write("-");
+            Console.Write("\b \b");
+            Console.Write("—");
             Thread.Sleep(250);
-            Console.Write("\b");
+            Console.Write("\b \b");
             Console.Write("\\");
             Thread.Sleep(250);
-            Console.Write("\b");
+            Console.Write("\b \b");
             Console.Write("|");
             Thread.Sleep(250);
-            Console.Write("\b");
+            Console.Write("\b \b");
         }
     }
 
@@ -93,7 +93,7 @@ public class Activity
         {
             Console.Write($"{i}");
             Thread.Sleep(1000);
-            Console.Write("\b");
+            Console.Write("\b \b");
         }
         Console.WriteLine();
     }
