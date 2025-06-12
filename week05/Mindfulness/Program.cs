@@ -5,6 +5,9 @@ using System.Runtime.CompilerServices;
 //Above and Beyond - Input parsing.  While it's important to not belittle someone's attempts to be mindful,
 //there are prompts that need a valid input to prevent the program from breaking.  Specifically the menu
 //selection and the duration entry.  In these cases, validation is used to ensure a valid entry is provided.
+//Above and Beyond - Avoid repeats in Reflection Activity.  When the questions are being shown to the user
+//about their prompt, no question gets repeated until all questions have been used.  This resets each time
+//the user starts a new reflection activity.
 
 class Program
 {

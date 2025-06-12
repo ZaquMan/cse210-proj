@@ -31,10 +31,10 @@ public class BreathingActivity : Activity
         for (int i = _duration; i > 0; i -= 10)
         {
             Console.Write("Breathe in  ");
-        ShowCountDownSeconds(4);
-        Console.Write("Now breathe out  ");
-        ShowCountDownSeconds(6);
-        Console.WriteLine();
+            ShowCountDownSeconds(4);
+            Console.Write("Now breathe out  ");
+            ShowCountDownSeconds(6);
+            Console.WriteLine();
         }
 
         DisplayEndingMessage();

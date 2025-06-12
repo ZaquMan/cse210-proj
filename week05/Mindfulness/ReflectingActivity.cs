@@ -2,6 +2,7 @@ public class ReflectingActivity : Activity
 {
     private List<string> _prompts;
     private List<string> _questions;
+    private List<string> _usedQuestions;
 
     public ReflectingActivity()
     {
@@ -25,6 +26,7 @@ public class ReflectingActivity : Activity
     {
         _prompts = prompts;
         _questions = questions;
+        _usedQuestions = [];
     }
 
     private void SetupPromptsAndQuestions()
@@ -43,10 +45,17 @@ public class ReflectingActivity : Activity
                       "What could you learn from this experience that applies to other situations?",
                       "What did you learn about yourself through this experience?",
                       "How can you keep this experience in mind in the future?",];
+
+        _usedQuestions = [];
     }
 
     public void Run()
     {
+        if (_usedQuestions.Count > 0)
+        {
+            _questions.AddRange(_usedQuestions);
+            _usedQuestions = [];
+        }
         DisplayStartingMessage();
         //Run the activity.
         Console.WriteLine("Consider the following prompt:\n");
@@ -85,12 +94,21 @@ public class ReflectingActivity : Activity
 
     private string GetRandomQuestion()
     {
+        //Check if there are questions available
+        if (_questions.Count == 0 && _usedQuestions.Count > 0)
+        {
+            _questions.AddRange(_usedQuestions);
+        }
+
         //Gets a random prompt from the list of prompts.
-        //DEVNOTE: A suggest "Above and Beyond" is restricting prompts from repeating until all have been cycled through.
-        //This can be easily done by having two lists, and words are moved between them as they are used.
         Random rand = new Random();
+        int questionIterator = rand.Next(_questions.Count);
         //Write the prompt corresponding to the iterator selected between 0 and the number of possible prompts.
-        return _questions[rand.Next(_prompts.Count)];
+        string question = _questions[questionIterator];
+        _usedQuestions.Add(question);
+        _questions.RemoveAt(questionIterator);
+
+        return question;
     }
 
     private void DisplayPrompt()
