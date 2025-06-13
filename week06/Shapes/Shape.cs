@@ -1,6 +1,6 @@
 public abstract class Shape
 {
-    string _color;
+    private string _color;
 
     public Shape(string color)
     {
@@ -8,4 +8,14 @@ public abstract class Shape
     }
 
     public abstract float CalculateArea();
+
+    public void SetColor(string color)
+    {
+        _color = color;
+    }
+
+    public string GetColor()
+    {
+        return _color;
+    }
 }
