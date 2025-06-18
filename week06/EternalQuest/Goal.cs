@@ -1,33 +1,29 @@
-public class Goal
+public abstract class Goal
 {
-	private string _shortName;
-	private string _description;
-	private string _points;
+	protected string _shortName;
+	protected string _description;
+	protected int _points;
 
-	public Goal(string shortName, string description, string points)
+	public Goal(string shortName, string description, int points)
 	{
 		_shortName = shortName;
 		_description = description;
 		_points = points;
 	}
 
-	public virtual void RecordEvent()
+	public string GetName()
 	{
-		//Do nothing for now.  Add something later so it can be called properly.
+		return _shortName;
 	}
 
-	public virtual bool isComplete()
-	{
-		return false;
-	}
+	public abstract int RecordEvent();
+
+	public abstract bool isComplete();
 
 	public virtual string GetDetailsString()
 	{
-		return "";
+		return $"{_shortName} ({_description})";
 	}
 
-	public virtual string GetStringRepresentation()
-	{
-		return ""; 
-	}
+	public abstract string GetStringRepresentation();
 }
