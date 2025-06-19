@@ -24,6 +24,6 @@ public class Running : Exercise
 
 	public override string GetSummary()
 	{
-		return $"{_date} Running ({_minutes} min): Distance: {GetDistance():.1f} km, Speed: {GetSpeed():.1f} kph, Pace: {GetPace():.2f} min per km";
+		return $"{_date} Running ({_minutes} min): Distance: {GetDistance():F1} km, Speed: {GetSpeed():F1} kph, Pace: {GetPace():F2}2 min per km";
 	}
 }
